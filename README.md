@@ -4,6 +4,10 @@
 
 ### 使用方法
 
-```Bash
+用 root 登录，执行
 
+```Bash
+cd /etc/profile.d/ && wget https://raw.githubusercontent.com/yuanze31/sysinfo-in-ssh-login/refs/heads/main/sysinfo.sh
 ```
+
+**此脚本已在 Debian 11 和 Debian 12 上测试可用**
