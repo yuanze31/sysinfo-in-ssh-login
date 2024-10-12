@@ -1,0 +1,2 @@
+# sysinfo in ssh login
+ 
