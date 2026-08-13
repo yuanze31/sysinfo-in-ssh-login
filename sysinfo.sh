@@ -1,4 +1,8 @@
 #!/bin/bash
+# 保存调用方 shell 的选项状态。本脚本由 /etc/profile source 进登录 shell，
+# 若 set -euo pipefail 不恢复，选项会泄漏到交互 shell，
+# 导致任意命令报错（false、未找到命令等）即退出 shell、SSH 断连。
+SAVED_OPTS=$(set +o)
 set -euo pipefail
 
 # 定义颜色（优先 tput，MOTD 这种无终端的环境用 ANSI 硬编码兜底）
@@ -108,3 +112,6 @@ df -h 2>/dev/null | awk '
 done
 
 echo "${BLUE}=========================================${RESET}"
+
+# 恢复调用方 shell 的选项状态，避免污染交互 shell
+eval "$SAVED_OPTS"
